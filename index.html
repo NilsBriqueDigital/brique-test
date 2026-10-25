@@ -3,31 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brique</title>
+  <title>Brique Digital</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="hero">
-    <h1>Bouw iets moois, stap voor stap</h1>
-    <p>Een eenvoudige website, van laptop naar GitHub naar live.</p>
-    <a href="#blokken" class="cta">Ontdek meer</a>
+  <!-- Header in STUW-stijl: logo links, nav in een pil, CTA rechts -->
+  <header class="site-header">
+    <a href="#" class="logo" aria-label="Brique Digital">
+      <span class="logo-main">BRIQUE</span>
+      <span class="logo-sub">DIGITAL</span>
+    </a>
+
+    <nav class="nav-pill" id="nav">
+      <a href="#aanbod">Aanbod <span class="chevron">⌄</span></a>
+      <a href="#visie">Over ons</a>
+      <a href="#aanbod">Projecten</a>
+      <a href="#contact">Blog</a>
+    </nav>
+
+    <a href="#contact" class="btn btn-cta">
+      Contacteer ons <span class="cta-icon">✳</span>
+    </a>
+
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span>
+    </button>
   </header>
 
-  <main id="blokken" class="blokken">
-    <section class="blok">
-      <h2>Eenvoudig</h2>
-      <p>Gewoon HTML en CSS. Geen frameworks, geen build tools.</p>
-    </section>
-    <section class="blok">
-      <h2>Snel</h2>
-      <p>Een lichte pagina die meteen laadt, op elk toestel.</p>
-    </section>
-    <section class="blok">
-      <h2>Live</h2>
-      <p>Push naar GitHub en je site staat online.</p>
-    </section>
-  </main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-circle" aria-hidden="true"></div>
 
+    <div class="hero-text">
+      <h1>Online marketing voor KMO's die willen groeien.</h1>
+      <a href="#contact" class="btn btn-light">Gratis screening aanvragen</a>
+    </div>
+
+    <!-- De vier vormen die bouncen bij het scrollen -->
+    <div class="shapes" aria-hidden="true">
+      <div class="shape shape-globe" data-gain="0.7" data-rot="0.06">
+        <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="5">
+          <circle cx="100" cy="100" r="92"/>
+          <ellipse cx="100" cy="100" rx="40" ry="92"/>
+          <ellipse cx="100" cy="100" rx="72" ry="92"/>
+          <line x1="100" y1="8" x2="100" y2="192"/>
+          <path d="M14 66 Q100 50 186 66"/>
+          <path d="M8 100 Q100 88 192 100"/>
+          <path d="M14 134 Q100 122 186 134"/>
+        </svg>
+      </div>
+
+      <div class="shape shape-circle" data-gain="1.1" data-rot="-0.04">
+        <svg viewBox="0 0 100 100"><path d="M30 64 L64 30 L66 58 L74 70 L66 72 L58 62 Z" fill="currentColor"/></svg>
+      </div>
+
+      <div class="shape shape-square" data-gain="0.85" data-rot="0.02">
+        <svg viewBox="0 0 100 100"><path d="M50 8 C53 40 60 47 92 50 C60 53 53 60 50 92 C47 60 40 53 8 50 C40 47 47 40 50 8 Z" fill="currentColor"/></svg>
+      </div>
+
+      <div class="shape shape-arch" data-gain="1.3" data-rot="-0.03"></div>
+    </div>
+  </section>
+
+  <!-- Waar we in geloven -->
+  <section class="visie" id="visie">
+    <div class="visie-art reveal" aria-hidden="true">
+      <div class="lines"></div>
+    </div>
+
+    <h2 class="reveal">Waar we in geloven.</h2>
+
+    <div class="visie-text reveal">
+      <p>Geen losse acties, maar één strategie die werkt. We bouwen een aanpak die leads aantrekt, opvolgt en omzet in klanten.</p>
+      <p>Voor KMO's met ambitie. Je krijgt een vast aanspreekpunt, duidelijke cijfers en geen vage beloftes. <em>No black box.</em></p>
+      <p>Benieuwd waar jouw groeikansen liggen? We bekijken het graag samen.</p>
+      <a href="#contact" class="btn btn-light">Plan een koffie</a>
+    </div>
+  </section>
+
+  <!-- Aanbod -->
+  <section class="aanbod" id="aanbod">
+    <div class="aanbod-head">
+      <h2 class="reveal">Hoe we je laten groeien</h2>
+      <a href="#contact" class="btn btn-dark reveal">Ontdek ons aanbod</a>
+    </div>
+
+    <div class="cards">
+      <article class="card card-rect reveal">
+        <strong>Leads</strong>
+        <span>die vanzelf binnenkomen</span>
+        <small>Aantrekken</small>
+      </article>
+      <article class="card card-arch reveal">
+        <strong>Snelle</strong>
+        <span>en slimme opvolging</span>
+        <small>Opvolgen</small>
+      </article>
+      <article class="card card-rect reveal">
+        <strong>Klanten</strong>
+        <span>in plaats van losse clicks</span>
+        <small>Omzetten</small>
+      </article>
+      <article class="card card-pill reveal">
+        <strong>Groei</strong>
+        <span>die je kan meten</span>
+        <small>Rapporteren</small>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact / footer -->
+  <footer class="footer" id="contact">
+    <h2 class="reveal">Klaar om te groeien?</h2>
+    <a href="mailto:hello@briquedigital.be" class="btn btn-cta btn-big reveal">
+      hello@briquedigital.be <span class="cta-icon">✳</span>
+    </a>
+    <p class="footer-small">© Brique Digital</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,78 +1,577 @@
+:root {
+  --purple: #B564F7;
+  --purple-dark: #9d45e6;
+  --purple-light: #EEDCFD;
+  --black: #141414;
+  --bg: #F1F0F3;
+  --white: #ffffff;
+  --u: clamp(90px, 17vw, 330px); /* maat van de hero-vormen */
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #1a1a1a;
-  background: #ffffff;
+  color: var(--black);
+  background: var(--bg);
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
-/* Hero */
-.hero {
-  min-height: 70vh;
-  display: flex;
-  flex-direction: column;
+h1, h2 {
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+/* Knoppen */
+.btn {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 4rem 1.5rem;
-  background: #f7f0fe;
-}
-
-.hero h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  gap: 0.6rem;
   font-weight: 700;
-  max-width: 16ch;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.15rem;
-  color: #555;
-  margin-bottom: 2rem;
-}
-
-.cta {
-  display: inline-block;
-  background: #B564F7;
-  color: #ffffff;
   text-decoration: none;
-  font-weight: 600;
-  padding: 0.9rem 2rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-cta {
+  background: var(--purple);
+  color: var(--white);
+}
+
+.btn-cta:hover {
+  background: var(--purple-dark);
+}
+
+.btn-light {
+  background: var(--white);
+  color: var(--purple);
+}
+
+.btn-dark {
+  background: var(--black);
+  color: var(--white);
+}
+
+.cta-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--purple);
+  font-size: 0.85em;
+  transition: transform 0.4s;
+}
+
+.btn:hover .cta-icon {
+  transform: rotate(180deg);
+}
+
+/* Header (STUW-stijl) */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.25rem 2rem;
+  transition: background 0.3s, padding 0.3s;
+}
+
+.site-header.scrolled {
+  background: rgba(241, 240, 243, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  color: var(--purple);
+  border: 3px solid var(--purple);
+  border-radius: 8px;
+  padding: 0.15rem 0.6rem 0.25rem;
+  transform: rotate(-4deg);
+  line-height: 1;
+}
+
+.logo-main {
+  font-weight: 900;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+}
+
+.logo-sub {
+  font-weight: 800;
+  font-size: 0.6rem;
+  background: var(--purple);
+  color: var(--white);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  margin-top: 0.15rem;
+}
+
+.nav-pill {
+  display: flex;
+  gap: 0.25rem;
+  border: 1.5px solid var(--black);
+  border-radius: 999px;
+  padding: 0.35rem;
+  margin-left: auto;
+  background: var(--bg);
+}
+
+.nav-pill a {
+  color: var(--black);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.55rem 1.1rem;
   border-radius: 999px;
   transition: background 0.2s;
 }
 
-.cta:hover {
-  background: #9d45e6;
+.nav-pill a:hover {
+  background: var(--purple-light);
 }
 
-/* Blokken */
-.blokken {
+.chevron {
+  display: inline-block;
+  font-size: 0.8em;
+  transform: translateY(-0.15em);
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.hero-circle {
+  position: absolute;
+  width: min(118vh, 64vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--purple);
+  right: -10vw;
+  top: 50%;
+  transform: translateY(-52%);
+}
+
+.hero-text {
+  position: absolute;
+  right: 7vw;
+  top: 50%;
+  transform: translateY(-45%);
+  width: min(36vw, 560px);
+  color: var(--white);
+  z-index: 2;
+}
+
+.hero-text h1 {
+  font-size: clamp(2.4rem, 5.2vw, 5.4rem);
+  margin-bottom: 2rem;
+}
+
+/* De vier vormen */
+.shapes {
+  position: absolute;
+  left: -1vw;
+  bottom: 0;
+  width: calc(var(--u) * 3.6);
+  height: calc(var(--u) * 2.3);
+  z-index: 1;
+}
+
+.shape {
+  position: absolute;
+  will-change: transform;
+}
+
+.shape-globe {
+  left: 0;
+  bottom: calc(var(--u) * 0.8);
+  width: calc(var(--u) * 0.8);
+  color: var(--black);
+  z-index: 2;
+}
+
+.shape-globe svg {
+  display: block;
+  width: 100%;
+}
+
+.shape-circle {
+  left: calc(var(--u) * 0.3);
+  bottom: calc(var(--u) * -0.2);
+  width: var(--u);
+  height: var(--u);
+  border-radius: 50%;
+  background: var(--purple);
+  color: var(--black);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 4rem 1.5rem;
+  place-items: center;
 }
 
-.blok {
-  padding: 2rem;
-  border-radius: 12px;
-  border: 1px solid #eee;
+.shape-circle svg {
+  width: 38%;
+  transform: rotate(-10deg);
 }
 
-.blok h2 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  color: #B564F7;
+.shape-square {
+  left: calc(var(--u) * 1.32);
+  bottom: calc(var(--u) * -0.25);
+  width: calc(var(--u) * 1.15);
+  height: calc(var(--u) * 1.3);
+  background: var(--black);
+  color: var(--white);
+  display: grid;
+  place-items: center;
 }
 
-.blok p {
-  color: #555;
+.shape-square svg {
+  width: 62%;
+}
+
+.shape-arch {
+  left: calc(var(--u) * 2.47);
+  bottom: calc(var(--u) * -0.25);
+  width: var(--u);
+  height: calc(var(--u) * 1.05);
+  background: var(--purple);
+  border-radius: calc(var(--u) / 2) calc(var(--u) / 2) 0 0;
+}
+
+/* Waar we in geloven */
+.visie {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap: 4vw;
+  align-items: start;
+  background: var(--purple);
+  color: var(--white);
+  padding: 6rem 4vw 6rem 0;
+}
+
+.visie-art {
+  height: 100%;
+  min-height: 520px;
+  background: var(--black);
+  border-radius: 0 999px 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.visie-art .lines {
+  position: absolute;
+  inset: -50%;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0 28px,
+    var(--purple) 28px 34px
+  );
+  animation: slide 6s linear infinite;
+}
+
+@keyframes slide {
+  to { transform: translate(48px, 0); }
+}
+
+.visie h2 {
+  font-size: clamp(2.6rem, 5vw, 5rem);
+}
+
+.visie-text p {
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+}
+
+.visie-text .btn {
+  margin-top: 1rem;
+}
+
+/* Aanbod */
+.aanbod {
+  background: var(--white);
+  padding: 6rem 4vw;
+}
+
+.aanbod-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.aanbod h2 {
+  font-size: clamp(2.6rem, 5vw, 5rem);
+  color: var(--purple);
+  max-width: 9ch;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.card {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  padding: 3rem 2rem;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5rem;
+}
+
+.card strong {
+  font-size: clamp(2rem, 3.6vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.card span {
+  font-size: clamp(1.2rem, 2vw, 1.9rem);
+  line-height: 1.15;
+  margin-top: 0.5rem;
+}
+
+.card small {
+  position: absolute;
+  bottom: -2.2rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: var(--purple);
+  font-size: 1rem;
+}
+
+.card-rect {
+  background: var(--black);
+}
+
+.card-arch {
+  background: var(--purple);
+  border-radius: 999px 999px 0 0;
+  padding-top: 4rem;
+}
+
+.card-pill {
+  background: var(--purple);
+  border-radius: 999px;
+  padding-top: 4rem;
+}
+
+/* Footer */
+.footer {
+  background: var(--black);
+  color: var(--white);
+  padding: 7rem 4vw 3rem;
+  text-align: center;
+}
+
+.footer h2 {
+  font-size: clamp(2.8rem, 8vw, 8rem);
+  margin-bottom: 2.5rem;
+}
+
+.btn-big {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  padding: 1.1rem 2rem;
+}
+
+.footer-small {
+  margin-top: 5rem;
+  opacity: 0.5;
+  font-size: 0.9rem;
+}
+
+/* Inschuiven bij scrollen */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.cards .reveal:nth-child(2) { transition-delay: 0.1s; }
+.cards .reveal:nth-child(3) { transition-delay: 0.2s; }
+.cards .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+/* Tablet */
+@media (max-width: 1000px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .visie {
+    grid-template-columns: 1fr 1fr;
+    padding: 5rem 6vw;
+  }
+
+  .visie-art {
+    display: none;
+  }
+}
+
+/* Mobiel */
+@media (max-width: 800px) {
+  :root {
+    --u: 27vw;
+  }
+
+  .site-header {
+    padding: 1rem;
+  }
+
+  .site-header > .btn-cta {
+    display: none;
+  }
+
+  /* Wit logo zolang het op de paarse cirkel staat */
+  .site-header:not(.scrolled) .logo {
+    color: var(--white);
+    border-color: var(--white);
+  }
+
+  .site-header:not(.scrolled) .logo-sub {
+    background: var(--white);
+    color: var(--purple);
+  }
+
+  .menu-toggle {
+    display: grid;
+    gap: 6px;
+    place-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1.5px solid var(--black);
+    border-radius: 50%;
+    background: var(--bg);
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--black);
+    transition: transform 0.3s;
+  }
+
+  .menu-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  .nav-pill {
+    position: absolute;
+    top: 76px;
+    left: 1rem;
+    right: 1rem;
+    flex-direction: column;
+    border-radius: 24px;
+    padding: 0.5rem;
+    display: none;
+  }
+
+  .nav-pill.open {
+    display: flex;
+  }
+
+  .hero-circle {
+    width: 165vw;
+    right: -42vw;
+    top: -38vw;
+    transform: none;
+  }
+
+  .hero-text {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: auto;
+    padding: 130px 1.25rem 0;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(2.2rem, 10vw, 3.4rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .visie {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 4rem 1.25rem;
+  }
+
+  .aanbod {
+    padding: 4rem 1.25rem;
+  }
+
+  .aanbod-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cards {
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 2rem 1.1rem;
+  }
+
+  .card-arch,
+  .card-pill {
+    padding-top: 2.5rem;
+  }
+
+  .footer {
+    padding: 5rem 1.25rem 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .visie-art .lines { animation: none; }
 }
