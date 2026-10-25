@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #1a1a1a;
+  background: #ffffff;
+  line-height: 1.5;
+}
+
+/* Hero */
+.hero {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background: #f7f0fe;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  max-width: 16ch;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.cta {
+  display: inline-block;
+  background: #B564F7;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.9rem 2rem;
+  border-radius: 999px;
+  transition: background 0.2s;
+}
+
+.cta:hover {
+  background: #9d45e6;
+}
+
+/* Blokken */
+.blokken {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.blok {
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.blok h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #B564F7;
+}
+
+.blok p {
+  color: #555;
+}
