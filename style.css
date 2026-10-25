@@ -416,6 +416,233 @@ h1, h2 {
   font-size: 0.9rem;
 }
 
+/* KMO Groeiscan */
+.scan {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 8rem 1.5rem 4rem;
+  overflow: hidden;
+}
+
+.scan-circle {
+  position: fixed;
+  width: 46vw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--purple);
+  right: -16vw;
+  top: -12vw;
+}
+
+.scan .shapes {
+  --u: clamp(70px, 11vw, 190px);
+  position: fixed;
+  width: calc(var(--u) * 3.6);
+}
+
+.scan .shape-circle { left: 0; }
+.scan .shape-square { left: calc(var(--u) * 1.02); }
+.scan .shape-arch { left: calc(var(--u) * 2.17); }
+
+.scan-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 720px;
+  background: var(--white);
+  border-radius: 32px;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  box-shadow: 0 30px 80px rgba(20, 20, 20, 0.08);
+}
+
+.scan-card.step-in {
+  animation: step-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes step-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+.scan-card h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  margin-bottom: 1rem;
+}
+
+.scan-card h2 {
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  margin-bottom: 1.75rem;
+  outline: none;
+}
+
+.scan-kicker {
+  color: var(--purple);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.scan-meta {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.scan-progress {
+  height: 8px;
+  background: var(--purple-light);
+  border-radius: 999px;
+  margin-bottom: 1.75rem;
+  overflow: hidden;
+}
+
+.scan-progress-bar {
+  height: 100%;
+  background: var(--purple);
+  border-radius: 999px;
+  transition: width 0.4s;
+}
+
+.scan-answers {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.scan-answer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  font-size: 1.05rem;
+  color: var(--black);
+  background: var(--bg);
+  border: 2px solid transparent;
+  border-radius: 18px;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+.scan-answer:hover {
+  border-color: var(--purple);
+  transform: translateX(4px);
+}
+
+.scan-answer.selected {
+  background: var(--purple);
+  color: var(--white);
+}
+
+.scan-answer-letter {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--purple);
+  font-weight: 700;
+}
+
+.scan-back {
+  margin-top: 1.5rem;
+  font: inherit;
+  color: #666;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.scan-profile {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0.4em;
+  letter-spacing: 0;
+  background: var(--purple);
+  color: var(--white);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  margin-left: 0.5rem;
+}
+
+.scan-lead {
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+}
+
+.scan-bars {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.scan-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.scan-bar.weakest .scan-bar-label {
+  color: var(--purple);
+}
+
+.scan-bar-track {
+  height: 14px;
+  background: var(--bg);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.scan-bar-fill {
+  height: 100%;
+  width: 0;
+  background: var(--black);
+  border-radius: 999px;
+  transition: width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.scan-bar.weakest .scan-bar-fill {
+  background: var(--purple);
+}
+
+.scan-bar-fill.fill {
+  width: var(--w);
+}
+
+.scan-tips {
+  background: var(--purple-light);
+  border-radius: 20px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.scan-tips h3 {
+  margin-bottom: 0.75rem;
+}
+
+.scan-tips ol {
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.scan-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+.scan-actions .scan-back {
+  margin-top: 0;
+}
+
 /* Inschuiven bij scrollen */
 .reveal {
   opacity: 0;
@@ -463,12 +690,12 @@ h1, h2 {
   }
 
   /* Wit logo zolang het op de paarse cirkel staat */
-  .site-header:not(.scrolled) .logo {
+  body:not(.page-scan) .site-header:not(.scrolled) .logo {
     color: var(--white);
     border-color: var(--white);
   }
 
-  .site-header:not(.scrolled) .logo-sub {
+  body:not(.page-scan) .site-header:not(.scrolled) .logo-sub {
     background: var(--white);
     color: var(--purple);
   }

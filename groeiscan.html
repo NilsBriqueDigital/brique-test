@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KMO Groeiscan | Brique Digital</title>
+  <meta name="description" content="Hoe klaar is jouw marketing om te groeien? Doe de gratis KMO Groeiscan: 8 vragen, 2 minuten, meteen resultaat.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-scan">
+
+  <header class="site-header">
+    <a href="index.html" class="logo" aria-label="Brique Digital">
+      <span class="logo-main">BRIQUE</span>
+      <span class="logo-sub">DIGITAL</span>
+    </a>
+
+    <nav class="nav-pill" id="nav">
+      <a href="index.html#aanbod">Aanbod <span class="chevron">⌄</span></a>
+      <a href="index.html#visie">Over ons</a>
+      <a href="index.html#aanbod">Projecten</a>
+      <a href="groeiscan.html">Groeiscan</a>
+    </nav>
+
+    <a href="index.html#contact" class="btn btn-cta">
+      Contacteer ons <span class="cta-icon">✳</span>
+    </a>
+
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main class="scan">
+    <div class="scan-circle" aria-hidden="true"></div>
+
+    <div class="shapes" aria-hidden="true">
+      <div class="shape shape-circle" data-gain="1.1" data-rot="-0.04">
+        <svg viewBox="0 0 100 100"><path d="M30 64 L64 30 L66 58 L74 70 L66 72 L58 62 Z" fill="currentColor"/></svg>
+      </div>
+      <div class="shape shape-square" data-gain="0.85" data-rot="0.02">
+        <svg viewBox="0 0 100 100"><path d="M50 8 C53 40 60 47 92 50 C60 53 53 60 50 92 C47 60 40 53 8 50 C40 47 47 40 50 8 Z" fill="currentColor"/></svg>
+      </div>
+      <div class="shape shape-arch" data-gain="1.3" data-rot="-0.03"></div>
+    </div>
+
+    <!-- groeiscan.js tekent hier start, vragen en resultaat -->
+    <div class="scan-card" id="scan" aria-live="polite"></div>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="groeiscan.js"></script>
+</body>
+</html>
